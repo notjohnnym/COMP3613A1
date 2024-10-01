@@ -5,7 +5,8 @@ from flask.cli import with_appcontext, AppGroup
 from App.database import db, get_migrate
 from App.models import User
 from App.main import create_app
-from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize )
+from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize,
+                                create_course, get_all_courses_json )
 
 
 # This commands file allow you to create convenient CLI commands for testing controllers
@@ -57,8 +58,14 @@ Course Commands
 course_cli = AppGroup('course', help='Course object commands') 
 
 @course_cli.command("create", help="Creates a course")
-def create_course_command():
-    pass
+@click.argument("code", default="COMP3613")
+@click.argument("title", default="SEII")
+@click.argument("credit", default=3)
+@click.argument("semester", default=1)
+@click.argument("faculty", default="FST")
+def create_course_command(code, title, credit, semester, faculty):
+    create_course(code, title, credit, semester, faculty)
+    print(get_all_courses_json())
 
 # this command will be flask course create args
 

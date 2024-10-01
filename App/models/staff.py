@@ -7,7 +7,7 @@ class Staff(db.Model):
     lastname = db.Column(db.String(60), nullable = False)
     faculty = db.Column(db.String(120), nullable = False)
     department = db.Column(db.String(120), nullable = False)
-    type = db.Column(db.String(20), nullable = False)
+    staff_type = db.Column(db.String(20))
     
     def __init__ (self, id, firstname, lastname, faculty, department):
         self.id = id
@@ -15,6 +15,14 @@ class Staff(db.Model):
         self.lastname = lastname
         self.faculty = faculty
         self.department = department
+    
+    def __init__ (self, id, firstname, lastname, faculty, department, staff_type):
+        self.id = id
+        self.firstname = firstname
+        self.lastname = lastname
+        self.faculty = faculty
+        self.department = department
+        self.staff_type = staff_type
     
     def get_json(self):
         return{

@@ -1,19 +1,18 @@
 from App.database import db
 
 class Course(db.Model):
-    code = db.Column(db.Integer, primary_key = True)
-    lecturer_id = db.Column(db.Integer, db.ForeignKey('lecturer.id'))
-    ta_id = db.Column(db.Integer, db.ForeignKey('ta.id'))
-    tutor_id = db.Column(db.Integer, db.ForeignKey('tutor.id'))
+    __tablename__ = 'course'
+
+    code = db.Column(db.String(20), primary_key = True)
     title = db.Column(db.String(120), nullable = False)
-    credits = db.Column(db.Integer)
-    semester = db.Column(db.Integer)
+    credit = db.Column(db.Integer, nullable = False)
+    semester = db.Column(db.Integer, nullable = False)
     faculty = db.Column(db.String(120), nullable = False)
     
-    def __init__ (self, code, title, credits, semester, faculty):
+    def __init__ (self, code, title, credit, semester, faculty):
         self.code = code
         self.title = title
-        self.credits = credits
+        self.credit = credit
         self.semester = semester
         self.faculty = faculty
     
@@ -21,7 +20,7 @@ class Course(db.Model):
         return{
             'code': self.code,
             'title': self.title,
-            'credits': self.credits,
+            'credit': self.credit,
             'semester': self.semester,
             'faculty': self.faculty
         }

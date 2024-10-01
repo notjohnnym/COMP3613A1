@@ -6,5 +6,5 @@ class Tutor(Staff):
     
     def __init__ (self, id, firstname, lastname, faculty, department):
         super().__init__(id, firstname, lastname, faculty, department)
-        self.type = "tutor"
+        self.staff_type = "tutor"
 
