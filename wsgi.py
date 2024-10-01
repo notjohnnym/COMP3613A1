@@ -120,8 +120,17 @@ TA Commands
 ta_cli = AppGroup('ta', help='TA object commands')
 
 @ta_cli.command("create", help="Creates a ta")
-def create_ta_command():
-    pass
+@click.argument("id", default=200)
+@click.argument("firstname", default="Amit")
+@click.argument("lastname", default="Ramkissoon")
+@click.argument("faculty", default="FST")
+@click.argument("department", default="DCIT")
+def create_ta_command(id, firstname, lastname, faculty, department):
+    ta = create_ta(id, firstname, lastname, faculty, department)
+    if ta:
+        print(ta.get_json())
+    else:
+        print("Error: TA Creation Failed!")
 
 # this command will be flask ta create args
 
