@@ -199,12 +199,13 @@ If you are adding models you may need to migrate the database with the commands 
 
 Create course
 
-'''bash
+```bash
 $ flask course create args
-'''
+```
 
 View Course Staff
 
-'''bash
+```bash
 $ flask course view
-'''
+```
+
