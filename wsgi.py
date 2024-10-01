@@ -6,7 +6,7 @@ from App.database import db, get_migrate
 from App.models import User
 from App.main import create_app
 from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize,
-                                create_course, get_all_courses_json )
+                                create_course, create_lecturer, create_ta, create_tutor)
 
 
 # This commands file allow you to create convenient CLI commands for testing controllers
@@ -64,8 +64,11 @@ course_cli = AppGroup('course', help='Course object commands')
 @click.argument("semester", default=1)
 @click.argument("faculty", default="FST")
 def create_course_command(code, title, credit, semester, faculty):
-    create_course(code, title, credit, semester, faculty)
-    print(get_all_courses_json())
+    course = create_course(code, title, credit, semester, faculty)
+    if course:
+        print(course.get_json())
+    else:
+        print('Error: Course Creation Failed!')
 
 # this command will be flask course create args
 
@@ -86,8 +89,17 @@ Lecturer Commands
 lecturer_cli = AppGroup('lecturer', help='Lecturer object commands') 
 
 @lecturer_cli.command("create", help="Creates a lecturer")
-def create_lecturer_command():
-    pass
+@click.argument("id", default=100)
+@click.argument("firstname", default="Permanand")
+@click.argument("lastname", default="Mohan")
+@click.argument("faculty", default="FST")
+@click.argument("department", default="DCIT")
+def create_lecturer_command(id, firstname, lastname, faculty, department):
+    lecturer = create_lecturer(id, firstname, lastname, faculty, department)
+    if lecturer:
+        print(lecturer.get_json())
+    else:
+        print("Error: Lecturer Creation Failed!")
 
 # this command will be flask lecturer create args
 

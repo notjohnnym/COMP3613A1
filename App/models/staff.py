@@ -15,19 +15,13 @@ class Staff(db.Model):
         self.lastname = lastname
         self.faculty = faculty
         self.department = department
-    
-    def __init__ (self, id, firstname, lastname, faculty, department, staff_type):
-        self.id = id
-        self.firstname = firstname
-        self.lastname = lastname
-        self.faculty = faculty
-        self.department = department
-        self.staff_type = staff_type
+        self.staff_type = None
     
     def get_json(self):
         return{
             'id': self.id,
-            'name': self.name,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
             'faculty': self.faculty,
             'department': self.department
         }
