@@ -151,8 +151,17 @@ Tutor Commands
 tutor_cli = AppGroup('tutor', help='Tutor object commands')
 
 @tutor_cli.command("create", help="Creates a tutor")
-def create_tutor_command():
-    pass
+@click.argument("id", default=300)
+@click.argument("firstname", default="Sergio")
+@click.argument("lastname", default="Mathurin")
+@click.argument("faculty", default="FST")
+@click.argument("department", default="DCIT")
+def create_tutor_command(id, firstname, lastname, faculty, department):
+    tutor = create_tutor(id, firstname, lastname, faculty, department)
+    if tutor:
+        print(tutor.get_json())
+    else:
+        print("Error: Tutor Creation Failed!")
 
 # this command will be flask tutor create args
 
