@@ -49,6 +49,96 @@ def list_user_command(format):
 
 app.cli.add_command(user_cli) # add the group to the cli
 
+
+'''
+Course Commands
+'''
+
+course_cli = AppGroup('course', help='Course object commands') 
+
+@course_cli.command("create", help="Creates a course")
+def create_course_command():
+    pass
+
+# this command will be flask course create args
+
+
+@course_cli.command("view", help="View Course Staff")
+def view_course_staff():
+    pass
+
+# this command will be flask course view
+
+app.cli.add_command(course_cli)
+
+
+'''
+Lecturer Commands
+'''
+
+lecturer_cli = AppGroup('lecturer', help='Lecturer object commands') 
+
+@lecturer_cli.command("create", help="Creates a lecturer")
+def create_lecturer_command():
+    pass
+
+# this command will be flask lecturer create args
+
+
+@lecturer_cli.command("assign", help="Assigns a lecturer to a course")
+def assign_lecturer_command():
+    pass
+
+# this command will be flask lecturer assign args
+
+app.cli.add_command(lecturer_cli)
+
+
+'''
+TA Commands
+'''
+
+ta_cli = AppGroup('ta', help='TA object commands')
+
+@ta_cli.command("create", help="Creates a ta")
+def create_ta_command():
+    pass
+
+# this command will be flask ta create args
+
+
+@ta_cli.command("assign", help="Assigns a ta to a course")
+def assign_ta_command():
+    pass
+
+# this command will be flask ta assign args
+
+app.cli.add_command(ta_cli)
+
+
+'''
+Tutor Commands
+'''
+
+tutor_cli = AppGroup('tutor', help='Tutor object commands')
+
+@tutor_cli.command("create", help="Creates a tutor")
+def create_tutor_command():
+    pass
+
+# this command will be flask tutor create args
+
+
+@tutor_cli.command("assign", help="Assigns a tutor to a course")
+def assign_tutor_command():
+    pass
+
+# this command will be flask ta assign args
+
+app.cli.add_command(tutor_cli)
+
+
+
 '''
 Test Commands
 '''
