@@ -209,3 +209,45 @@ View Course Staff
 $ flask course view
 ```
 
+## Lecturer Commands
+
+Create Lecturer
+
+```bash
+$ flask lecturer create args
+```
+
+Assign Lecturer to Course
+
+```bash
+$ flask lecturer assign args
+```
+
+## TA Commands
+
+Create TA
+
+```bash
+$ flask ta create args
+```
+
+Assign TA to Course
+
+```bash
+$ flask ta assign args
+```
+
+## Tutor Commands
+
+Create Tutor
+
+```bash
+$ flask tutor create args
+```
+
+Assign Tutor to Course
+
+```bash
+$ flask tutor assign args
+```
+
