@@ -195,3 +195,16 @@ If you are adding models you may need to migrate the database with the commands 
 
 # Commands
 
+## Course Commands
+
+Create course
+
+'''bash
+$ flask course create args
+'''
+
+View Course Staff
+
+'''bash
+$ flask course view
+'''
