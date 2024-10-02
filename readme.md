@@ -200,10 +200,10 @@ If you are adding models you may need to migrate the database with the commands 
 Create course
 
 ```bash
-$ flask course create args
+$ flask course create COMP3613 SEII 3 1 FST
 ```
 
-View Course Staff
+View Course Staff (Not working)
 
 ```bash
 $ flask course view
@@ -214,10 +214,10 @@ $ flask course view
 Create Lecturer
 
 ```bash
-$ flask lecturer create args
+$ flask lecturer create 100 Permanand Mohan FST DCIT
 ```
 
-Assign Lecturer to Course
+Assign Lecturer to Course (Not working)
 
 ```bash
 $ flask lecturer assign args
@@ -228,10 +228,10 @@ $ flask lecturer assign args
 Create TA
 
 ```bash
-$ flask ta create args
+$ flask ta create 200 Amit Ramkissoon FST DCIT
 ```
 
-Assign TA to Course
+Assign TA to Course (Not working)
 
 ```bash
 $ flask ta assign args
@@ -242,10 +242,10 @@ $ flask ta assign args
 Create Tutor
 
 ```bash
-$ flask tutor create args
+$ flask tutor create 300 Sergio Mathurin FST DCIT
 ```
 
-Assign Tutor to Course
+Assign Tutor to Course (Not working)
 
 ```bash
 $ flask tutor assign args
