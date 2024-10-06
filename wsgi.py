@@ -79,7 +79,7 @@ def create_course_command(code, title, credit, semester, faculty):
 def view_course_staff(code):
     print(get_staff(code))
 
-# this command will be flask course view
+# this command will be flask course view COMP3613
 
 app.cli.add_command(course_cli)
 
@@ -114,7 +114,7 @@ def assign_lecturer_command(id, code):
     lecturer = get_lecturer(id)
     if course and lecturer:
         course.assign_lecturer(lecturer)
-        print("Lecturer ", id, " assigned to ", course)
+        print("Lecturer ", id, " assigned to ", code)
     else:
         if course:
             print("Error: Lecturer does not exist")
@@ -150,10 +150,21 @@ def create_ta_command(id, firstname, lastname, faculty, department):
 
 
 @ta_cli.command("assign", help="Assigns a ta to a course")
-def assign_ta_command():
-    pass
+@click.argument("id", default=200)
+@click.argument("code", default="COMP3613")
+def assign_ta_command(id, code):
+    course = get_course(code)
+    ta = get_ta(id)
+    if course and ta:
+        course.assign_ta(ta)
+        print("TA ", id, " assigned to ", code)
+    else:
+        if course:
+            print("Error: TA does not exist")
+        if ta:
+            print("Error: Course does not exist")
 
-# this command will be flask ta assign args
+# this command will be flask ta assign 200 COMP3613
 
 app.cli.add_command(ta_cli)
 
@@ -181,10 +192,21 @@ def create_tutor_command(id, firstname, lastname, faculty, department):
 
 
 @tutor_cli.command("assign", help="Assigns a tutor to a course")
-def assign_tutor_command():
-    pass
+@click.argument("id", default=300)
+@click.argument("code", default="COMP3613")
+def assign_tutor_command(id, code):
+    course = get_course(code)
+    tutor = get_tutor(id)
+    if course and tutor:
+        course.assign_tutor(tutor)
+        print("Tutor ", id, " assigned to ", code)
+    else:
+        if course:
+            print("Error: Tutor does not exist")
+        if tutor:
+            print("Error: Course does not exist")
 
-# this command will be flask ta assign args
+# this command will be flask tutor assign 300 COMP3613
 
 app.cli.add_command(tutor_cli)
 

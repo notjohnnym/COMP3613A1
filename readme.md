@@ -203,10 +203,10 @@ Create course
 $ flask course create COMP3613 SEII 3 1 FST
 ```
 
-View Course Staff (Not working)
+View Course Staff
 
 ```bash
-$ flask course view
+$ flask course view COMP3613
 ```
 
 ## Lecturer Commands
@@ -217,10 +217,10 @@ Create Lecturer
 $ flask lecturer create 100 Permanand Mohan FST DCIT
 ```
 
-Assign Lecturer to Course (Not working)
+Assign Lecturer to Course
 
 ```bash
-$ flask lecturer assign args
+$ flask lecturer assign 100 COMP3613
 ```
 
 ## TA Commands
@@ -231,10 +231,10 @@ Create TA
 $ flask ta create 200 Amit Ramkissoon FST DCIT
 ```
 
-Assign TA to Course (Not working)
+Assign TA to Course
 
 ```bash
-$ flask ta assign args
+$ flask ta assign 200 COMP3613
 ```
 
 ## Tutor Commands
@@ -245,9 +245,9 @@ Create Tutor
 $ flask tutor create 300 Sergio Mathurin FST DCIT
 ```
 
-Assign Tutor to Course (Not working)
+Assign Tutor to Course
 
 ```bash
-$ flask tutor assign args
+$ flask tutor assign 300 COMP3613
 ```
 
