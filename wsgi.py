@@ -6,7 +6,8 @@ from App.database import db, get_migrate
 from App.models import User
 from App.main import create_app
 from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize,
-                                create_course, create_lecturer, create_ta, create_tutor)
+                                create_course, create_lecturer, create_ta, create_tutor,
+                                get_staff, get_course, get_lecturer, get_ta, get_tutor )
 
 
 # This commands file allow you to create convenient CLI commands for testing controllers
@@ -74,8 +75,9 @@ def create_course_command(code, title, credit, semester, faculty):
 
 
 @course_cli.command("view", help="View Course Staff")
-def view_course_staff():
-    pass
+@click.argument("code", default="COMP3613")
+def view_course_staff(code):
+    print(get_staff(code))
 
 # this command will be flask course view
 
@@ -107,9 +109,18 @@ def create_lecturer_command(id, firstname, lastname, faculty, department):
 @lecturer_cli.command("assign", help="Assigns a lecturer to a course")
 @click.argument("id", default=100)
 @click.argument("code", default="COMP3613")
-def assign_lecturer_command():
-    allocation = assign_lecturer(code, id)
-    
+def assign_lecturer_command(id, code):
+    course = get_course(code)
+    lecturer = get_lecturer(id)
+    if course and lecturer:
+        course.assign_lecturer(lecturer)
+        print("Lecturer ", id, " assigned to ", course)
+    else:
+        if course:
+            print("Error: Lecturer does not exist")
+        if lecturer:
+            print("Error: Course does not exist")
+
 
 # this command will be flask lecturer assign 100 COMP3613
 

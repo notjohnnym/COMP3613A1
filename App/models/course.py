@@ -22,6 +22,18 @@ class Course(db.Model):
         self.ta_id = None
         self.tutor_id = None
     
+    def assign_lecturer(self, lecturer):
+        self.lecturer_id = lecturer.id
+        db.session.commit()
+    
+    def assign_ta(self, ta):
+        self.ta_id = ta.id
+        db.session.commit()
+    
+    def assign_tutor(self, tutor):
+        self.tutor_id = tutor.id
+        db.session.commit()
+
     def get_json(self):
         return{
             'code': self.code,
