@@ -70,7 +70,7 @@ def create_course_command(code, title, credit, semester, faculty):
     else:
         print('Error: Course Creation Failed!')
 
-# this command will be flask course create args
+# this command will be flask course create COMP3613 SEII 3 1 FST
 
 
 @course_cli.command("view", help="View Course Staff")
@@ -101,14 +101,17 @@ def create_lecturer_command(id, firstname, lastname, faculty, department):
     else:
         print("Error: Lecturer Creation Failed!")
 
-# this command will be flask lecturer create args
+# this command will be flask lecturer create 100 Permanand Mohan FST DCIT
 
 
 @lecturer_cli.command("assign", help="Assigns a lecturer to a course")
+@click.argument("id", default=100)
+@click.argument("code", default="COMP3613")
 def assign_lecturer_command():
-    pass
+    allocation = assign_lecturer(code, id)
+    
 
-# this command will be flask lecturer assign args
+# this command will be flask lecturer assign 100 COMP3613
 
 app.cli.add_command(lecturer_cli)
 
@@ -132,7 +135,7 @@ def create_ta_command(id, firstname, lastname, faculty, department):
     else:
         print("Error: TA Creation Failed!")
 
-# this command will be flask ta create args
+# this command will be flask ta create 200 Amit Ramkissoon FST DCIT
 
 
 @ta_cli.command("assign", help="Assigns a ta to a course")
@@ -163,7 +166,7 @@ def create_tutor_command(id, firstname, lastname, faculty, department):
     else:
         print("Error: Tutor Creation Failed!")
 
-# this command will be flask tutor create args
+# this command will be flask tutor create 300 Sergio Mathurin FST DCIT
 
 
 @tutor_cli.command("assign", help="Assigns a tutor to a course")
